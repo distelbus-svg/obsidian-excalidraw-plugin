@@ -62,6 +62,7 @@ export type ExcalidrawViewAppState = Omit<
   resetCustomPen?: unknown;
   customPens?: unknown[];
   pinnedScripts?: string[];
+  paperStyle?: "none" | "ruled" | "grid" | "dots" | null;
   showHyperlinkPopup?:
     | AppState["showHyperlinkPopup"]
     | {

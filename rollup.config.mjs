@@ -8,12 +8,15 @@ import copy from "rollup-plugin-copy";
 import typescript from "@rollup/plugin-typescript";
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import postprocess from '@zsviczian/rollup-plugin-postprocess';
 import cssnano from 'cssnano';
 import jsesc from 'jsesc';
 import { minify } from 'uglify-js';
 import json from '@rollup/plugin-json';
 import { parseEnv } from 'node:util';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 function compressDeflateBase64(code) {
   // Compress using Node's native zlib at maximum compression
@@ -94,9 +97,10 @@ function compressLanguageFile(lang) {
   return compressDeflateBase64(minifyCode(`x = ${content};`));
 }
 
+const excalidrawDist = path.resolve(__dirname, "../excalidraw/packages/excalidraw/dist");
 const excalidraw_pkg = isLib ? "" : minifyCode(isProd
-  ? fs.readFileSync("./node_modules/@zsviczian/excalidraw/dist/excalidraw.production.min.js", "utf8")
-  : fs.readFileSync("./node_modules/@zsviczian/excalidraw/dist/excalidraw.development.js", "utf8"));
+  ? fs.readFileSync(path.join(excalidrawDist, "excalidraw.production.min.js"), "utf8")
+  : fs.readFileSync(path.join(excalidrawDist, "excalidraw.development.js"), "utf8"));
 const react_pkg = isLib ? "" : minifyCode(isProd
   ? fs.readFileSync("./node_modules/react/umd/react.production.min.js", "utf8")
   : fs.readFileSync("./node_modules/react/umd/react.development.js", "utf8"));

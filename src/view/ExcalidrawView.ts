@@ -4009,6 +4009,7 @@ export default class ExcalidrawView
             horizontal: true,
             vertical: true,
           },
+          paperStyle: "grid",
         },
         captureUpdate: CaptureUpdateAction.NEVER,
       });
@@ -4060,6 +4061,7 @@ export default class ExcalidrawView
             this.plugin.settings.numberOfCustomPens,
           ),
           gridDirection: this.plugin.settings.gridSettings.GRID_DIRECTION,
+          paperStyle: "grid",
         },
         files: excalidrawData.files,
         libraryItems: await this.getLibrary(),
@@ -4985,6 +4987,7 @@ export default class ExcalidrawView
         gridStep: st.gridStep,
         gridModeEnabled: st.gridModeEnabled,
         gridColor: st.gridColor,
+        paperStyle: (st as any).paperStyle,
         colorPalette: st.colorPalette,
         currentStrokeOptions: st.currentStrokeOptions,
         frameRendering: st.frameRendering,

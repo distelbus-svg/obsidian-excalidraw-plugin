@@ -125,6 +125,8 @@ export type ValueOf<T> = T[keyof T];
 
 export type DynamicStyle = "none" | "gray" | "colorful";
 
+export type PaperStyle = "none" | "ruled" | "grid" | "dots";
+
 export type GridSettings = {
   DYNAMIC_COLOR: boolean; // Whether the grid color is dynamic
   COLOR: string; // The grid color (in hex format)

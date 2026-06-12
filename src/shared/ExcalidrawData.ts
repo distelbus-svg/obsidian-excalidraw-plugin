@@ -85,6 +85,7 @@ type ExcalidrawDataScene = SceneDataWithFiles & {
   appState: Mutable<NonNullable<SceneData["appState"]>> & {
     previousGridSize?: number | null;
     gridColor?: LegacyGridColor;
+    paperStyle?: "none" | "ruled" | "grid" | "dots" | null;
   };
 };
 
@@ -901,6 +902,11 @@ export class ExcalidrawData {
         this.scene.gridStep = this.scene.appState.gridColor.MajorGridFrequency;
       }
       delete this.scene.appState.gridColor.MajorGridFrequency;
+    }
+
+    // Set default paperStyle for drawings without it
+    if (!this.scene.appState.hasOwnProperty("paperStyle")) {
+      (this.scene.appState as any).paperStyle = null;
     }
 
     data = data.substring(0, sceneJSONandPOS.pos);
