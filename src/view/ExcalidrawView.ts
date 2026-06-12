@@ -4009,7 +4009,6 @@ export default class ExcalidrawView
             horizontal: true,
             vertical: true,
           },
-          paperStyle: "grid",
         },
         captureUpdate: CaptureUpdateAction.NEVER,
       });
@@ -4061,7 +4060,6 @@ export default class ExcalidrawView
             this.plugin.settings.numberOfCustomPens,
           ),
           gridDirection: this.plugin.settings.gridSettings.GRID_DIRECTION,
-          paperStyle: "grid",
         },
         files: excalidrawData.files,
         libraryItems: await this.getLibrary(),
